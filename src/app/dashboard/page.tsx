@@ -1,4 +1,5 @@
 import { auth } from "@/auth";
+import prisma from "@/lib/prisma";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -6,6 +7,13 @@ import { BookOpen, Sparkles, TrendingUp, Users } from "lucide-react";
 
 export default async function DashboardPage() {
   const session = await auth();
+  
+  let courseCount = 0;
+  if (session?.user?.id) {
+    courseCount = await prisma.course.count({
+      where: { userId: session.user.id }
+    });
+  }
 
   return (
     <div className="space-y-8">
@@ -21,8 +29,8 @@ export default async function DashboardPage() {
             <BookOpen className="w-4 h-4 text-indigo-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-slate-50">0</div>
-            <p className="text-xs text-slate-500 mt-1">Start building your first.</p>
+            <div className="text-2xl font-bold text-slate-50">{courseCount}</div>
+            <p className="text-xs text-slate-500 mt-1">Total defined modules.</p>
           </CardContent>
         </Card>
         
@@ -32,7 +40,7 @@ export default async function DashboardPage() {
             <Sparkles className="w-4 h-4 text-violet-400" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-slate-50">0</div>
+            <div className="text-2xl font-bold text-slate-50">{courseCount}</div>
             <p className="text-xs text-slate-500 mt-1">Curriculums generated.</p>
           </CardContent>
         </Card>
