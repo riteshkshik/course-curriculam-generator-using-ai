@@ -1,65 +1,69 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
-export default function Home() {
+export default function MarketingPage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen relative overflow-hidden bg-slate-950 text-slate-50 flex items-center justify-center">
+      {/* Background Gradients */}
+      <div className="absolute top-0 left-1/2 -z-10 h-full w-full -translate-x-1/2 overflow-hidden">
+        <div className="absolute top-[-10%] left-[-10%] h-[50vh] w-[50vw] rounded-full bg-indigo-500/20 blur-[120px]" />
+        <div className="absolute right-[-10%] top-[40%] h-[50vh] w-[50vw] rounded-full bg-violet-600/20 blur-[100px]" />
+      </div>
+
+      <div className="container relative mx-auto px-6 py-32 flex flex-col items-center text-center">
+        <div className="inline-flex items-center rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-sm text-indigo-300 font-medium mb-8 backdrop-blur-md">
+          <span className="flex h-2 w-2 rounded-full bg-indigo-400 mr-2 animate-pulse"></span>
+          Introducing Next-Gen AI Curriculum Generation
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+        
+        <h1 className="text-5xl font-extrabold tracking-tight sm:text-7xl mb-6 max-w-4xl text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-200 to-slate-400">
+          Design World-Class Courses in Seconds.
+        </h1>
+        
+        <p className="max-w-2xl text-lg text-slate-400 mb-10 leading-relaxed">
+          The ultimate platform for educators. AI-Powered Course Architect helps you craft detailed curriculums, modules, and lessons instantly tailored to your audience.
+        </p>
+
+        <div className="flex items-center gap-4">
+          <Link href="/dashboard">
+            <Button size="lg" className="rounded-full h-12 px-8 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold transition-all hover:scale-105 active:scale-95">
+              Start Building Now
+            </Button>
+          </Link>
+          <a href="#features">
+            <Button size="lg" variant="outline" className="rounded-full h-12 px-8 border-slate-700 text-slate-300 hover:bg-slate-800 transition-all">
+              See How It Works
+            </Button>
           </a>
         </div>
-      </main>
+        
+        {/* Mockup or UI graphic */}
+        <div className="mt-20 w-full max-w-5xl rounded-2xl border border-slate-800 bg-slate-900/50 p-4 shadow-2xl backdrop-blur-sm">
+          <div className="rounded-xl border border-slate-800 bg-black/40 overflow-hidden shadow-inner flex flex-col h-[400px]">
+             {/* Mock App Header */}
+             <div className="h-12 border-b border-slate-800 bg-slate-900/80 flex items-center px-4 gap-2">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                </div>
+                <div className="mx-auto bg-slate-800/80 h-6 w-1/3 rounded text-xs flex items-center justify-center text-slate-400 font-mono">
+                  architect.ai/dashboard
+                </div>
+             </div>
+             {/* Mock App Body */}
+             <div className="flex-1 p-8 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 border border-indigo-500/30 bg-indigo-500/10 rounded-2xl flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-indigo-400"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+                  </div>
+                  <div className="font-semibold text-slate-300">Generating Module Context...</div>
+                  <div className="text-sm text-slate-500 mt-2 animate-pulse">Running advanced AI pipeline...</div>
+                </div>
+             </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
