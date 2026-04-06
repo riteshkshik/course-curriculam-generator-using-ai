@@ -70,10 +70,11 @@ export default async function CoursesPage() {
                       <span>{new Date(course.createdAt).toLocaleDateString()}</span>
                     </div>
                   </div>
-                  
                   <div className="flex gap-2 mt-auto">
-                    <Button variant="outline" className="w-full border-slate-700 hover:bg-slate-800">View</Button>
-                    <Button variant="outline" className="w-full border-slate-700 hover:bg-slate-800">Edit</Button>
+                    <Link href={`/dashboard/courses/${course.id}`} className="w-full">
+                      <Button variant="outline" className="w-full border-slate-700 hover:bg-slate-800">View</Button>
+                    </Link>
+                    <Button variant="outline" className="w-full border-slate-700 hover:bg-slate-800" disabled>Edit</Button>
                   </div>
                 </CardContent>
               </Card>
