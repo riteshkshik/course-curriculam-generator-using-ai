@@ -14,24 +14,28 @@ export async function generateCurriculumAction(params: CourseSchemaType) {
 
   try {
     const result = await generateObject({
-      model: google("models/gemini-1.5-pro-latest"),
+      model: google("gemini-3-flash-preview"),
       schema: z.object({
         overview: z.string(),
         timeEstimate: z.string(),
-        modules: z.array(z.object({
-          moduleTitle: z.string(),
-          moduleDescription: z.string(),
-          lessons: z.array(z.object({
-            lessonTitle: z.string(),
-            keyTakeaways: z.array(z.string()),
-          }))
-        }))
+        modules: z.array(
+          z.object({
+            moduleTitle: z.string(),
+            moduleDescription: z.string(),
+            lessons: z.array(
+              z.object({
+                lessonTitle: z.string(),
+                keyTakeaways: z.array(z.string()),
+              }),
+            ),
+          }),
+        ),
       }),
       prompt: `Act as an elite Staff-Level Course Architect. You must generate a world-class, extremely detailed, engaging, and professional curriculum.
       Course Title: "${title}"
       Description: "${description}"
-      Target Audience: ${targetAudience || 'General Audience'}
-      Difficulty: ${difficulty || 'Beginner'}
+      Target Audience: ${targetAudience || "General Audience"}
+      Difficulty: ${difficulty || "Beginner"}
       
       Generate a practical, step-by-step learning progression. Each module should logically lead to the next.`,
     });

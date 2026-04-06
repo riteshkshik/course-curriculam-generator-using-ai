@@ -31,8 +31,12 @@ export default async function Header() {
             ) : (
               <form action={async () => {
                 "use server";
-                // Without providing credentials, this redirects to standard nextauth login page
-                await signIn("credentials", { redirectTo: "/dashboard" });
+                // Auto-login with test credentials
+                await signIn("credentials", { 
+                  username: "admin", 
+                  password: "admin", 
+                  redirectTo: "/dashboard" 
+                });
               }}>
                 <Button type="submit" className="rounded-full px-6 transition-all hover:scale-105 active:scale-95">Get Started</Button>
               </form>
