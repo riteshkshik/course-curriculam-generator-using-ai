@@ -9,9 +9,10 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { BookOpen, Calendar, Clock, BarChart } from "lucide-react";
+import { Course } from "@prisma/client";
 
 export default async function CoursesPage() {
-  let courses;
+  let courses: Course[];
   try {
     courses = await getCourses();
   } catch (e) {
